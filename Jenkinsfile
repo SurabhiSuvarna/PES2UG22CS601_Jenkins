@@ -5,7 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'g++ -o PES2UG22CS601-1 program.cpp'
+                    // Compile hello.cpp instead of program.cpp
+                    sh 'g++ -o PES2UG22CS601-1 hello.cpp'
                 }
             }
         }
@@ -13,6 +14,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
+                    // Run the compiled hello.cpp
                     sh './PES2UG22CS601-1'
                 }
             }
@@ -26,8 +28,8 @@ pipeline {
                     git config --global user.email "surabhisuvarna290804@gmail.com"
                     
                     git checkout main || git checkout -b main
-                    git add program.cpp
-                    git commit -m "Added new C++ file"
+                    git add hello.cpp
+                    git commit -m "Added hello.cpp file"
                     git push origin HEAD:main
                     '''
                 }
@@ -41,4 +43,5 @@ pipeline {
         }
     }
 }
+
 
