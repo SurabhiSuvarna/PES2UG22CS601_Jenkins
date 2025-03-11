@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -11,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'g++ -o PES2UG22CS601-1 hello.cpp'
+                    sh 'g++ -o PES2UG22CS601-1 hello.cp' 
                 }
             }
         }
@@ -27,9 +28,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sh 'git config --global user.name "Surabhi S Suvarna"'
+                    sh 'git config --global user.name "PES2UG22CS601"'
                     sh 'git config --global user.email "surabhisuvarna290804@gmail.com"'
-                    sh 'git checkout main'
+                    sh 'git checkout -B main origin/main'
                     sh 'git add -A'
                     sh 'git commit -m "Added hello.cpp file" || echo "No changes to commit"'
                 }
@@ -48,8 +49,7 @@ pipeline {
             echo "Build and deployment successful!"
         }
         failure {
-            echo "Pipeline failed"
+            echo "Pipeline failed" 
         }
     }
 }
-
